@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
 import joblib
 import numpy as np
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 # Load the trained Random Forest model
 model = joblib.load('random_forest_model.pkl')
