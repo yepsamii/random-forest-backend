@@ -20,12 +20,12 @@ def predict():
 
         # Extract and validate all required features
         features = [
+           float(data['gender']),
             float(data['age']),
             float(data['hypertension']),
-            float(data['avg_glucose_level']),
-            float(data['bmi']),
             float(data['heart_disease']),
-            float(data['gender'])
+            float(data['avg_glucose_level']),
+            float(data['smoking_status'])
         ]
     except (KeyError, TypeError, ValueError) as e:
         return jsonify({
@@ -38,10 +38,10 @@ def predict():
 
     return jsonify({
         "prediction": int(prediction),
-        # "probabilities": {
-        #     "class_0": proba[0],
-        #     "class_1": proba[1]
-        # }
+        "probabilities": {
+            "class_0": proba[0],
+            "class_1": proba[1]
+        }
     })
 
 if __name__ == '__main__':
